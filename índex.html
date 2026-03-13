@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsurTech Future - Seguros Auto e Pet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+        .smooth-scroll { scroll-behavior: smooth; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transfaorm: translateY(0); }
+        .range-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; background: #3b82f6; border-radius: 50%; cursor: pointer; }
+        .range-slider::-moz-range-thumb { width: 20px; height: 20px; background: #3b82f6; border-radius: 50%; cursor: pointer; }
+        .pulse-ring { animation: pulse-ring 2s infinite; }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        .stat-card { transition: all 0.3s ease; }
+        .stat-card:hover { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+        .stat-card:hover .stat-icon, .stat-card:hover .stat-value, .stat-card:hover .stat-label { color: white; }
+        .gradient-text { background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 smooth-scroll">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-blue-600 tracking-tight">Insur<span class="text-gray-800">Tech</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-blue-600 font-medium transition">Início</a>
+                    <a href="#insurtech" class="text-gray-600 hover:text-blue-600 font-medium transition">O que é InsurTech</a>
+                    <a href="#modelo" class="text-gray-600 hover:text-blue-600 font-medium transition">Modelo de Negócio</a>
+                    <a href="#sobre" class="text-gray-600 hover:text-blue-600 font-medium transition">Quem Somos</a>
+                    <a href="#auto" class="text-gray-600 hover:text-blue-600 font-medium transition">Seguro Auto</a>
+                    <a href="#pet" class="text-gray-600 hover:text-blue-600 font-medium transition">Seguro Pet</a>
+                    <a href="#contato" class="bg-blue-600 text-white px-5 py-2.5 rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-600/30">Fale Conosco</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Início</a>
+                <a href="#insurtech" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">O que é InsurTech</a>
+                <a href="#modelo" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Modelo de Negócio</a>
+                <a href="#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Quem Somos</a>
+                <a href="#auto" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Seguro Auto</a>
+                <a href="#pet" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50">Seguro Pet</a>
+                <a href="#contato" class="block px-3 py-2 rounded-md text-base font-medium text-blue-600 font-bold hover:bg-gray-50">Fale Conosco</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto fade-in">
+                <div class="inline-block px-4 py-2 bg-blue-500/20 text-blue-300 font-semibold rounded-full text-sm mb-6 border border-blue-400/30">
+                    🚀 Tecnologia + Seguros = Futuro
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+                    O futuro do seguro é <span class="text-blue-400">personalizado</span> e <span class="text-green-400">justo</span>.
+                </h1>
+                <p class="text-xl text-gray-300 mb-10 leading-relaxed">
+                    Tecnologia de ponta para proteger o que você ama. Do seu carro ao seu melhor amigo, temos o plano ideal para o seu estilo de vida.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#auto" class="px-8 py-4 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-700 transition shadow-xl shadow-blue-600/30 flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Seguro Auto Inteligente
+                    </a>
+                    <a href="#pet" class="px-8 py-4 bg-white/10 text-white border border-white/30 rounded-full font-bold text-lg hover:bg-white/20 transition shadow-lg flex items-center justify-center backdrop-blur-sm">
+                        <svg class="w-5 h-5 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        Planos para Pets
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 left-0 -ml-20 -mt-20 w-96 h-96 bg-blue-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob"></div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-green-500/20 rounded-full mix-blend-screen filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+    </section>
+
+    <!-- What is InsurTech Section -->
+    <section id="insurtech" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0 fade-in">
+                    <div class="inline-block px-4 py-1.5 bg-blue-50 text-blue-700 font-semibold rounded-full text-sm mb-6">
+                        💡 Entenda o Conceito
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        O que é <span class="text-blue-600">InsurTech</span>?
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        <strong>InsurTech</strong> é a união entre <strong>Insurance</strong> (seguros) e <strong>Technology</strong> (tecnologia). 
+                        É uma revolução no mercado segurador que utiliza inovação tecnológica para tornar os seguros mais 
+                        <span class="text-blue-600 font-semibold">acessíveis, transparentes e personalizados</span>.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Diferente das seguradoras tradicionais, as InsurTechs utilizam dados em tempo real, 
+                        inteligência artificial e aplicativos móveis para oferecer experiências digitais completas 
+                        e preços justos baseados no seu comportamento real.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-xl">
+                            <div class="text-3xl font-bold text-blue-600 mb-1">+40%</div>
+                            <div class="text-sm text-gray-600">Mais econômicos</div>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-xl">
+                            <div class="text-3xl font-bold text-green-600 mb-1">100%</div>
+                            <div class="text-sm text-gray-600">Digital</div>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-xl">
+                            <div class="text-3xl font-bold text-purple-600 mb-1">24/7</div>
+                            <div class="text-sm text-gray-600">Suporte</div>
+                        </div>
+                        <div class="bg-orange-50 p-4 rounded-xl">
+                            <div class="text-3xl font-bold text-orange-600 mb-1">+90%</div>
+                            <div class="text-sm text-gray-600">Satisfação</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="absolute inset-0 bg-blue-600 rounded-3xl transform rotate-3 opacity-10"></div>
+                    <img src="https://image.qwenlm.ai/public_source/989d6e2b-e118-4b60-85f6-92551fd97520/788234e87-2366-4862-b082-41381f6f7165.png" alt="Tecnologia InsurTech" class="relative rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model Section - NEW -->
+    <section id="modelo" class="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-300 font-semibold rounded-full text-sm mb-6 border border-blue-400/30">
+                    ⚡ Nosso Diferencial
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                    Modelo de Negócio <span class="gradient-text">Inovador</span>
+                </h2>
+                <p class="text-lg text-gray-300">
+                    Combinamos embedded insurance e inteligência artificial para oferecer seguros mais baratos, 
+                    rápidos e eficientes, minimizando custos operacionais e trabalho humano.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Embedded Insurance Card -->
+                <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 card-hover fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 float-animation">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">🔗 Embedded Insurance</h3>
+                    <p class="text-gray-300 mb-6">
+                        Integramos seguros diretamente em plataformas e serviços que você já utiliza. 
+                        Contratação em poucos cliques, sem burocracia, no momento exato que você precisa.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Integração com e-commerces e apps</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Contratação em menos de 2 minutos</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Sem papelada ou processos manuais</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>APIs para parceiros e integradores</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Automation Card -->
+                <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 card-hover fade-in">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 float-animation">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">🤖 Automação com I.A.</h3>
+                    <p class="text-gray-300 mb-6">
+                        Utilizamos inteligência artificial para automatizar processos, reduzir custos operacionais 
+                        e eliminar trabalho humano repetitivo. Mais eficiência = preços menores para você.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Underwriting automatizado por I.A.</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Análise de sinistros em segundos</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Chatbots 24/7 para atendimento</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <svg class="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Redução de até 60% nos custos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Banner -->
+            <div class="bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-3xl p-8 md:p-12 border border-white/10 fade-in">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-blue-400 mb-2">-60%</div>
+                        <div class="text-gray-300">Custos Operacionais</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">-80%</div>
+                        <div class="text-gray-300">Tempo de Processamento</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-purple-400 mb-2">2min</div>
+                        <div class="text-gray-300">Tempo de Contratação</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold text-orange-400 mb-2">99%</div>
+                        <div class="text-gray-300">Processos Automatizados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="sobre" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block px-4 py-1.5 bg-green-50 text-green-700 font-semibold rounded-full text-sm mb-6">
+                    👥 Conheça Nossa Empresa
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Quem <span class="text-green-600">Somos</span>
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Somos uma startup brasileira fundada em 2023 por especialistas em seguros e tecnologia, 
+                    com a missão de democratizar o acesso a seguros de qualidade através da inovação.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center card-hover fade-in">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Inovação</h3>
+                    <p class="text-gray-600">Utilizamos as mais recentes tecnologias para criar produtos seguros inteligentes e adaptáveis.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center card-hover fade-in">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Confiança</h3>
+                    <p class="text-gray-600">Transparência total em nossos processos e coberturas. Sem letras miúdas ou surpresas.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center card-hover fade-in">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Pessoas</h3>
+                    <p class="text-gray-600">Nosso foco é você. Criamos seguros que se adaptam ao seu estilo de vida, não o contrário.</p>
+                </div>
+            </div>
+
+            <!-- Team Stats -->
+            <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl p-8 md:p-12 fade-in">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold mb-2">+10K</div>
+                        <div class="text-blue-200">Clientes Ativos</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold mb-2">98%</div>
+                        <div class="text-blue-200">Satisfação</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold mb-2">+50</div>
+                        <div class="text-blue-200">Funcionários</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl md:text-5xl font-bold mb-2">24h</div>
+                        <div class="text-blue-200">Tempo de Resposta</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto Insurance Section -->
+    <section id="auto" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block px-4 py-1.5 bg-blue-50 text-blue-700 font-semibold rounded-full text-sm mb-6">
+                    🚗 Seguro Auto Inteligente
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Pague apenas pelo que você <span class="text-blue-600">dirige</span>
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Nossa tecnologia de telemetria analisa sua direção em tempo real através do nosso aplicativo exclusivo.
+                </p>
+            </div>
+
+            <!-- App Features -->
+            <div class="mb-16 fade-in">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12">
+                    <div class="text-center mb-10">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">📱 Acompanhe Tudo pelo App</h3>
+                        <p class="text-gray-600 max-w-2xl mx-auto">
+                            Nosso aplicativo exclusivo mostra em tempo real como você está dirigindo e calcula seus descontos automaticamente.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="stat-card bg-white p-6 rounded-2xl text-center cursor-pointer">
+                            <div class="stat-icon w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <div class="stat-value text-2xl font-bold text-gray-900 mb-1">KM Rodados</div>
+                            <div class="stat-label text-sm text-gray-500">Monitoramento diário</div>
+                        </div>
+
+                        <div class="stat-card bg-white p-6 rounded-2xl text-center cursor-pointer">
+                            <div class="stat-icon w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            </div>
+                            <div class="stat-value text-2xl font-bold text-gray-900 mb-1">Velocidade</div>
+                            <div class="stat-label text-sm text-gray-500">Alta ou baixa</div>
+                        </div>
+
+                        <div class="stat-card bg-white p-6 rounded-2xl text-center cursor-pointer">
+                            <div class="stat-icon w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            </div>
+                            <div class="stat-value text-2xl font-bold text-gray-900 mb-1">Freadas</div>
+                            <div class="stat-label text-sm text-gray-500">Detecta brusquidão</div>
+                        </div>
+
+                        <div class="stat-card bg-white p-6 rounded-2xl text-center cursor-pointer">
+                            <div class="stat-icon w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="stat-value text-2xl font-bold text-gray-900 mb-1">Descontos</div>
+                            <div class="stat-label text-sm text-gray-500">Acumule economia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0 fade-in">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Monitoramento em Tempo Real</h3>
+                                <p class="mt-1 text-gray-500">Acompanhe suas rotas, velocidade e hábitos de direção pelo app.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Detecção de Freadas Bruscas</h3>
+                                <p class="mt-1 text-gray-500">Nosso algoritmo identifica frenagens repentinas e alerta sobre direção agressiva.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Economia Real</h3>
+                                <p class="mt-1 text-gray-500">Dirigir com segurança gera descontos automáticos na renovação.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simulator -->
+                    <div class="mt-10 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <h4 class="font-semibold text-gray-900 mb-4">Simulador de Economia</h4>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Km mensais estimados: <span id="km-value" class="text-blue-600 font-bold">1000</span> km</label>
+                        <input type="range" min="100" max="3000" value="1000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer range-slider" id="km-slider">
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Preço Tradicional</span>
+                            <span class="text-lg font-bold text-gray-400 line-through">R$ 250,00</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-sm font-medium text-gray-900">Nosso Preço</span>
+                            <span id="price-value" class="text-2xl font-bold text-green-600">R$ 120,00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-3">*Valores podem variar conforme comportamento de direção</p>
+                    </div>
+                </div>
+                <div class="relative fade-in">
+                    <div class="absolute inset-0 bg-blue-600 rounded-3xl transform rotate-3 opacity-10"></div>
+                    <img src="https://image.qwenlm.ai/public_source/989d6e2b-e118-4b60-85f6-92551fd97520/1945647a4-0905-4740-9bf2-8b33b1133759.png" alt="App de telemetria" class="relative rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+                    
+                    <!-- App Mockup Overlay -->
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 max-w-xs">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-900">Score de Direção</div>
+                                <div class="text-green-600 font-semibold">92/100 - Excelente!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Insurance Section -->
+    <section id="pet" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block px-4 py-1.5 bg-green-50 text-green-700 font-semibold rounded-full text-sm mb-6">
+                    🐾 Seguro Pet
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Planos de Saúde para seu <span class="text-green-600">Melhor Amigo</span>
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Cobertura completa para consultas, exames e emergências. Escolha o plano ideal para a necessidade do seu pet.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 card-hover transition-all duration-300 fade-in relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-bl-lg">BÁSICO</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pet Care</h3>
+                    <p class="text-gray-500 text-sm mb-6">Ideal para prevenção e consultas de rotina.</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-extrabold text-gray-900">R$ 49</span>
+                        <span class="text-gray-500">/mês</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            4 Consultas/ano
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Vacinas anuais
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Desconto em farmácia
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 px-4 bg-white border-2 border-blue-600 text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition">Selecionar Plano</button>
+                </div>
+
+                <!-- Standard Plan (Highlighted) -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl border-2 border-green-500 card-hover transition-all duration-300 fade-in relative transform md:-translate-y-4">
+                    <div class="absolute top-0 inset-x-0 bg-green-500 text-white text-center text-xs font-bold py-1">MAIS POPULAR</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 mt-4">Pet Premium</h3>
+                    <p class="text-gray-500 text-sm mb-6">Cobertura equilibrada para imprevistos.</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-extrabold text-gray-900">R$ 89</span>
+                        <span class="text-gray-500">/mês</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Consultas ilimitadas
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Exames de sangue
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Cirurgias simples (até 2k)
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Atendimento 24h
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 px-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition shadow-lg shadow-green-500/30">Selecionar Plano</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 card-hover transition-all duration-300 fade-in relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-bl-lg">COMPLETO</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Pet Elite</h3>
+                    <p class="text-gray-500 text-sm mb-6">Tranquilidade total sem limites.</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-extrabold text-gray-900">R$ 149</span>
+                        <span class="text-gray-500">/mês</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Tudo do Premium +
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Cirurgias complexas
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Fisioterapia
+                        </li>
+                        <li class="flex items-center text-gray-600 text-sm">
+                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Reembolso em 48h
+                        </li>
+                    </ul>
+                    <button class="w-full py-3 px-4 bg-white border-2 border-blue-600 text-blue-600 font-bold rounded-xl hover:bg-blue-50 transition">Selecionar Plano</button>
+                </div>
+            </div>
+            
+            <div class="mt-16 flex justify-center fade-in">
+                 <img src="https://image.qwenlm.ai/public_source/989d6e2b-e118-4b60-85f6-92551fd97520/1a4d42cd9-2bad-4654-bf92-29c049e5acf7.png" alt="Cachorro feliz" class="rounded-2xl shadow-lg max-h-64 object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Pronto para começar?
+                </h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Fale com nossos especialistas e descubra o plano perfeito para você e seu pet.
+                </p>
+                <form class="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <input type="text" placeholder="Seu nome" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+                        <input type="email" placeholder="Seu e-mail" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition">
+                    </div>
+                    <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition mb-4">
+                        <option value="">Qual seguro você busca?</option>
+                        <option value="auto">Seguro Auto</option>
+                        <option value="pet">Seguro Pet</option>
+                        <option value="both">Ambos</option>
+                    </select>
+                    <textarea placeholder="Sua mensagem" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition mb-4"></textarea>
+                    <button type="submit" class="w-full py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-600/30">
+                        Enviar Mensagem
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <span class="text-2xl font-bold text-white tracking-tight">Insur<span class="text-blue-500">Tech</span></span>
+                    <p class="mt-4 text-gray-400 max-w-sm">
+                        Revolucionando o mercado de seguros com tecnologia, transparência e foco no cliente.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Produtos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#auto" class="hover:text-white transition">Seguro Auto Telemetria</a></li>
+                        <li><a href="#pet" class="hover:text-white transition">Seguro Pet</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>suporte@insurtech.com.br</li>
+                        <li>(11) 99999-9999</li>
+                        <li class="flex space-x-4 mt-4">
+                            <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                            <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2023 InsurTech Future. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Auto Insurance Simulator Logic
+        const slider = document.getElementById('km-slider');
+        const kmValue = document.getElementById('km-value');
+        const priceValue = document.getElementById('price-value');
+
+        slider.addEventListener('input', (e) => {
+            const km = e.target.value;
+            kmValue.textContent = km;
+            
+            // Simple logic: Base price + variable cost per km
+            const basePrice = 50;
+            const costPerKm = 0.07;
+            const calculatedPrice = basePrice + (km * costPerKm);
+            
+            priceValue.textContent = calculatedPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>
+
